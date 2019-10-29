@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPostsAndUsers } from '../actions';
 import UserHeader from './UserHeader';
+import { formatId, formatTitle, formatBody, formatUserId } from '../formatters';
 
 class PostList extends React.Component {
     componentDidMount() {
@@ -10,20 +11,24 @@ class PostList extends React.Component {
 
     renderList() {
         return this.props.posts.map(post => {
+            console.log(post);
+
             return (
-                <div className="item" key={post.id}>
+                <div className="item" key={formatId(post.id)}>
                     <i className="large middle aligned icon user" />
                     <div className="content">
                         <div className="description">
-                            <h2>{post.title}</h2>
-                            <p>{post.body}</p>
+                            <h2>{formatTitle(post.title)}</h2>
+                            <p>{formatBody(post.body)}</p>
                         </div>
-                        <UserHeader userId={post.userId} />
+                        <UserHeader userId={formatUserId(post.userId)} />
                     </div>
                 </div>
             );
         });
     }
+
+    
 
     render() {
         return <div className="ui relaxed divided list">{this.renderList()}</div>;

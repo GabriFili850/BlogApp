@@ -48,13 +48,3 @@ describe('formattersUserHeader', () => {
         })
     })
 })
-
-
-
-
-
-
-//     const methodNameFake = jest.spyOn(MyComponent.prototype, 'methodName');
-//     const wrapper = mount(<MyComponent {...props} />);
-//     expect(methodNameFake).toHaveBeenCalledTimes();
-// });
